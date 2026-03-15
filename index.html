@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Blog Personal - Levin Petru</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #050505;
+            color: white;
+        }
+
+        /* SCROLL PROGRESS BAR */
+
+        .progress-bar {
+
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: #00ff88;
+            width: 0%;
+            z-index: 2000;
+
+        }
+
+        /* HEADER */
+
+        header {
+
+            position: fixed;
+            top: 4px;
+            width: 100%;
+            background: #0f0f0f;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 8%;
+            z-index: 1000;
+            border-bottom: 1px solid #00ff88;
+
+        }
+
+        .logo {
+
+            color: #00ff88;
+            font-size: 22px;
+            font-weight: bold;
+
+        }
+
+        nav a {
+
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            transition: .3s;
+
+        }
+
+        nav a:hover {
+
+            color: #00ff88;
+
+        }
+
+        /* SECTIONS */
+
+        section {
+
+            padding: 80px 10%;
+            display: flex;
+            align-items: center;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: 1s;
+
+        }
+
+        section.show {
+
+            opacity: 1;
+            transform: translateY(0);
+
+        }
+
+        /* DIFFERENT BACKGROUNDS */
+
+        .hero {
+            background: #020202;
+            border-bottom: 1px solid #00ff88;
+        }
+
+        .about {
+            background: #0b0b0b;
+            border-bottom: 1px solid #00ff88;
+        }
+
+        .specialitate {
+            background: #050a07;
+            border-bottom: 1px solid #00ff88;
+        }
+
+        .skills {
+            background: #0b0b05;
+            border-bottom: 1px solid #00ff88;
+        }
+
+        .performanta {
+            background: #070707;
+            border-bottom: 1px solid #00ff88;
+        }
+
+        .proiecte {
+            background: #060a06;
+        }
+
+        /* BLOCK */
+
+        .block {
+
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+            padding: 35px;
+            border-radius: 14px;
+            transition: .4s;
+
+        }
+
+        .block:hover {
+
+            background: #111;
+            box-shadow: 0 0 25px rgba(0, 255, 136, 0.25);
+            transform: translateY(-5px);
+
+        }
+
+        /* LEFT RIGHT */
+
+        .left {
+
+            text-align: left;
+            max-width: 650px;
+
+        }
+
+        .right {
+
+            margin-left: auto;
+            text-align: right;
+            max-width: 650px;
+
+        }
+
+        /* HERO */
+
+        .hero h1 {
+
+            font-size: 48px;
+            color: #00ff88;
+            margin-bottom: 15px;
+
+        }
+
+        .hero p {
+
+            font-size: 19px;
+            color: #ccc;
+
+        }
+
+        /* TITLES */
+
+        h2 {
+
+            color: #00ff88;
+            margin-bottom: 18px;
+            font-size: 30px;
+
+        }
+
+        p {
+
+            line-height: 1.7;
+            color: #ccc;
+
+        }
+
+        /* SKILLS */
+
+        .skills-container {
+
+            width: 100%;
+            text-align: center;
+            max-width: 1000px;
+            margin: 0 auto;
+
+        }
+
+        .skills-grid {
+
+            margin-top: 50px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            justify-items: center;
+
+        }
+
+        .card {
+
+            background: #111;
+            padding: 35px;
+            border-radius: 14px;
+            transition: .4s;
+            width: 200px;
+
+        }
+
+        .card:hover {
+
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 0 30px #00ff88;
+
+        }
+
+        /* SKILL CIRCLE */
+
+        svg {
+
+            width: 120px;
+            height: 120px;
+            transform: rotate(-90deg);
+
+        }
+
+        circle {
+
+            fill: none;
+            stroke-width: 10;
+
+        }
+
+        .bg {
+
+            stroke: #222;
+
+        }
+
+        .progress {
+
+            stroke: #00ff88;
+            stroke-linecap: round;
+            stroke-dasharray: 314;
+            stroke-dashoffset: 314;
+
+        }
+
+        .percent {
+
+            font-size: 18px;
+            margin-top: -80px;
+            margin-bottom: 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+        }
+
+        .name {
+
+            font-weight: bold;
+            color: #00ff88;
+
+        }
+
+        .value {
+
+            font-size: 14px;
+            color: #ccc;
+
+        }
+
+        /* COUNTER */
+
+        .counter {
+
+            font-size: 65px;
+            color: #00ff88;
+            font-weight: bold;
+
+        }
+
+        /* FOOTER */
+
+        footer {
+
+            background: #0f0f0f;
+            text-align: center;
+            padding: 30px;
+            color: #aaa;
+            border-top: 1px solid #00ff88;
+
+        }
+
+        @media (max-width: 768px) {
+
+            .skills-grid {
+
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 20px;
+
+            }
+
+            .card {
+
+                width: 150px;
+                padding: 20px;
+
+            }
+
+            svg {
+
+                width: 100px;
+                height: 100px;
+
+            }
+
+            circle {
+
+                cx: 50;
+                cy: 50;
+                r: 40;
+
+            }
+
+            .progress {
+
+                stroke-dasharray: 251;
+
+            }
+
+            .percent {
+
+                font-size: 16px;
+                margin-top: -60px;
+
+            }
+
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="progress-bar" id="progressBar"></div>
+
+    <header>
+
+        <div class="logo">Levin Petru</div>
+
+        <nav>
+
+            <a href="#hero">Home</a>
+            <a href="#about">Despre mine</a>
+            <a href="#specialitate">Specialitate</a>
+            <a href="#skills">Skilluri</a>
+            <a href="#performanta">Performanță</a>
+            <a href="#proiecte">Proiecte</a>
+
+        </nav>
+
+    </header>
+
+    <!-- HERO -->
+
+    <section class="hero" id="hero">
+
+        <div class="block">
+
+            <div class="left">
+
+                <h1>Blog Personal – Carieră IT</h1>
+
+                <p>
+
+                    Acesta este blogul meu personal unde prezint parcursul meu în domeniul IT,
+                    specialitatea pe care o studiez și experiența acumulată în dezvoltarea aplicațiilor web.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ABOUT -->
+
+    <section class="about" id="about">
+
+        <div class="block">
+
+            <div class="left">
+
+                <h2>Despre mine</h2>
+
+                <p>
+
+                    Mă numesc <b>Levin Petru</b> și sunt student în anul 4 la
+                    <b>Colegiul Iulia Hasdeu din Cahul</b> la specialitatea
+                    <b>Administrarea Aplicațiilor Web (AAW)</b>.
+
+                    Sunt pasionat de programare și de dezvoltarea aplicațiilor web moderne.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- SPECIALITATE -->
+
+    <section class="specialitate" id="specialitate">
+
+        <div class="block">
+
+            <div class="right">
+
+                <h2>Specialitatea Administrarea Aplicațiilor Web</h2>
+
+                <p>
+
+                    Specialitatea AAW presupune dezvoltarea, administrarea și securizarea aplicațiilor web.
+                    În cadrul studiilor învățăm frontend, backend, baze de date și administrarea serverelor web.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- SKILLS -->
+
+    <section class="skills" id="skills">
+
+        <div class="skills-container">
+
+            <h2>Limbaje și Tehnologii</h2>
+
+            <div class="skills-grid">
+
+                <div class="card">
+
+                    <svg>
+                        <circle class="bg" cx="60" cy="60" r="50"></circle>
+                        <circle class="progress" data-percent="90" cx="60" cy="60" r="50"></circle>
+                    </svg>
+
+                    <div class="percent">
+                        <span class="name">HTML</span>
+                        <span class="value">0%</span>
+                    </div>
+
+                </div>
+
+                <div class="card">
+
+                    <svg>
+                        <circle class="bg" cx="60" cy="60" r="50"></circle>
+                        <circle class="progress" data-percent="75" cx="60" cy="60" r="50"></circle>
+                    </svg>
+
+                    <div class="percent">
+                        <span class="name">CSS</span>
+                        <span class="value">0%</span>
+                    </div>
+
+                </div>
+
+                <div class="card">
+
+                    <svg>
+                        <circle class="bg" cx="60" cy="60" r="50"></circle>
+                        <circle class="progress" data-percent="80" cx="60" cy="60" r="50"></circle>
+                    </svg>
+
+                    <div class="percent">
+                        <span class="name">JavaScript</span>
+                        <span class="value">0%</span>
+                    </div>
+
+                </div>
+
+                <div class="card">
+
+                    <svg>
+                        <circle class="bg" cx="60" cy="60" r="50"></circle>
+                        <circle class="progress" data-percent="65" cx="60" cy="60" r="50"></circle>
+                    </svg>
+
+                    <div class="percent">
+                        <span class="name">Node.js</span>
+                        <span class="value">0%</span>
+                    </div>
+
+                </div>
+
+                <div class="card">
+
+                    <svg>
+                        <circle class="bg" cx="60" cy="60" r="50"></circle>
+                        <circle class="progress" data-percent="70" cx="60" cy="60" r="50"></circle>
+                    </svg>
+
+                    <div class="percent">
+                        <span class="name">MySQL</span>
+                        <span class="value">0%</span>
+                    </div>
+
+                </div>
+                <div class="card">
+
+                    <svg>
+                        <circle class="bg" cx="60" cy="60" r="50"></circle>
+                        <circle class="progress" data-percent="85" cx="60" cy="60" r="50"></circle>
+                    </svg>
+
+                    <div class="percent">
+                        <span class="name">PHP</span>
+                        <span class="value">0%</span>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- PERFORMANTA -->
+
+    <section class="performanta" id="performanta">
+
+        <div class="block">
+
+            <div class="left">
+
+                <h2>Performanță</h2>
+
+                <p>
+
+                    Pe parcursul studiilor am realizat numeroase proiecte web și aplicații practice
+                    folosind tehnologii moderne din domeniul dezvoltării web.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- PROIECTE -->
+
+    <section class="proiecte" id="proiecte">
+
+        <div class="block">
+
+            <div class="right">
+
+                <h2>Proiecte Finalizate</h2>
+
+                <div class="counter" id="counter">0</div>
+
+                <p>Proiecte realizate în timpul studiilor</p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <footer>
+
+        © 2026 Levin Petru | Blog Personal IT
+
+    </footer>
+
+    <script>
+
+        /* SCROLL PROGRESS BAR */
+
+        window.addEventListener("scroll", () => {
+
+            let scrollTop = document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+
+            let scrolled = (scrollTop / height) * 100;
+
+            document.getElementById("progressBar").style.width = scrolled + "%";
+
+        });
+
+        /* SECTION ANIMATION */
+
+        let sections = document.querySelectorAll("section");
+
+        window.addEventListener("scroll", () => {
+
+            sections.forEach(sec => {
+
+                let offset = sec.offsetTop - 350;
+
+                if (window.scrollY > offset) {
+
+                    sec.classList.add("show");
+
+                }
+
+            });
+
+        });
+
+        /* SKILL ANIMATION */
+
+        const skillObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Animație când intră în vedere
+                    document.querySelectorAll(".progress").forEach((circle, index) => {
+                        let percent = circle.dataset.percent;
+                        let offset = 314 - (314 * percent / 100);
+                        circle.style.transition = "2s";
+                        circle.style.strokeDashoffset = offset;
+
+                        // Animează procentul
+                        let valueSpan = document.querySelectorAll(".value")[index];
+                        let current = 0;
+                        let interval = setInterval(() => {
+                            if (current < percent) {
+                                current++;
+                                valueSpan.textContent = current + "%";
+                            } else {
+                                clearInterval(interval);
+                            }
+                        }, 20);
+                    });
+                } else {
+                    // Reset când iese din vedere
+                    document.querySelectorAll(".progress").forEach((circle, index) => {
+                        circle.style.transition = "0s";
+                        circle.style.strokeDashoffset = 314;
+
+                        // Reset procent
+                        let valueSpan = document.querySelectorAll(".value")[index];
+                        valueSpan.textContent = "0%";
+                    });
+                }
+            });
+        }, { threshold: 0.1 });
+
+        skillObserver.observe(document.querySelector("#skills"));
+
+        /* PROJECT COUNTER */
+
+        let counterStarted = false;
+
+        function animateCounter() {
+
+            if (counterStarted) return;
+
+            let section = document.querySelector("#proiecte");
+
+            if (section.getBoundingClientRect().top < window.innerHeight) {
+
+                counterStarted = true;
+
+                let counter = document.getElementById("counter");
+
+                let count = 0;
+
+                let interval = setInterval(() => {
+
+                    if (count >= 50) {
+
+                        counter.innerText = "50+";
+                        clearInterval(interval);
+
+                    } else {
+
+                        count++;
+                        counter.innerText = count;
+
+                    }
+
+                }, 40);
+
+            }
+
+        }
+
+        window.addEventListener("scroll", animateCounter);
+
+    </script>
+
+</body>
+
+</html>
