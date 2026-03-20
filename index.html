@@ -127,6 +127,128 @@
             background: #060a06;
         }
 
+        /* PORTFOLIO GRID */
+
+        .portfolio-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .project-card {
+            background: #111;
+            border: 1px solid #00ff88;
+            padding: 25px;
+            border-radius: 10px;
+            transition: .4s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.4);
+            background: #1a1a1a;
+        }
+
+        .project-title {
+            color: #00ff88;
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .project-description {
+            color: #ccc;
+            font-size: 14px;
+            margin-bottom: 15px;
+            flex-grow: 1;
+            line-height: 1.6;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .tech-badge {
+            background: #00ff88;
+            color: #000;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .portfolio-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 50px;
+            margin-bottom: 40px;
+        }
+
+        .stat-box {
+            background: #111;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid #00ff88;
+        }
+
+        .stat-number {
+            color: #00ff88;
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            animation: countUp 0.5s ease-out;
+            min-height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes countUp {
+            from {
+                opacity: 0;
+                transform: scale(0.5) translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .stat-box {
+            animation: slideInUp 0.6s ease-out;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .stat-label {
+            color: #ccc;
+            font-size: 14px;
+        }
+
         /* BLOCK */
 
         .block {
@@ -362,6 +484,28 @@
 
             }
 
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .project-card {
+                padding: 20px;
+            }
+
+            .portfolio-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            .stat-box {
+                padding: 20px;
+            }
+
+            .stat-number {
+                font-size: 28px;
+            }
+
         }
     </style>
 
@@ -566,13 +710,28 @@
 
             <div class="left">
 
-                <h2>Performanță</h2>
+                <h2>Performanță și Realizări</h2>
 
                 <p>
 
                     Pe parcursul studiilor am realizat numeroase proiecte web și aplicații practice
-                    folosind tehnologii moderne din domeniul dezvoltării web.
+                    folosind tehnologii moderne din domeniul dezvoltării web. Fiecare proiect a fost o 
+                    oportunitate de a aplica cunoștințele teoretice în practică și de a dobândi noi 
+                    abilități tehnice.
 
+                </p>
+
+                <p style="margin-top: 15px; color: #aaa;">
+                    <b style="color: #00ff88;">✓</b> Dezvoltare full-stack web applications
+                </p>
+                <p style="margin-top: 10px; color: #aaa;">
+                    <b style="color: #00ff88;">✓</b> Design responsiv și user-interface modern
+                </p>
+                <p style="margin-top: 10px; color: #aaa;">
+                    <b style="color: #00ff88;">✓</b> Securizarea aplicațiilor și protecția datelor
+                </p>
+                <p style="margin-top: 10px; color: #aaa;">
+                    <b style="color: #00ff88;">✓</b> Optimizare performanță și SEO
                 </p>
 
             </div>
@@ -585,15 +744,147 @@
 
     <section class="proiecte" id="proiecte">
 
-        <div class="block">
+        <div class="portfolio-container">
 
-            <div class="right">
+            <h2 style="text-align: center; margin-bottom: 40px;">Portfolio - Proiecte și Realizări</h2>
 
-                <h2>Proiecte Finalizate</h2>
+            <!-- STATISTICS -->
 
-                <div class="counter" id="counter">0</div>
+            <div class="portfolio-stats">
 
-                <p>Proiecte realizate în timpul studiilor</p>
+                <div class="stat-box">
+                    <div class="stat-number" data-target="50" data-suffix="+">0+</div>
+                    <div class="stat-label">Proiecte Completate</div>
+                </div>
+
+                <div class="stat-box">
+                    <div class="stat-number" data-target="3" data-suffix="+">0+</div>
+                    <div class="stat-label">Ani de Experiență</div>
+                </div>
+
+                <div class="stat-box">
+                    <div class="stat-number" data-target="15" data-suffix="+">0+</div>
+                    <div class="stat-label">Tehnologii Stăpânite</div>
+                </div>
+
+                <div class="stat-box">
+                    <div class="stat-number" data-target="90" data-suffix="%">0%</div>
+                    <div class="stat-label">Dedicație</div>
+                </div>
+
+            </div>
+
+            <!-- PROJECTS GRID -->
+
+            <div class="portfolio-grid">
+
+                <div class="project-card">
+                    <div class="project-title">🌐 E-Commerce Platform</div>
+                    <div class="project-description">
+                        Platformă de comerț electronic completă cu sistem de autentificare, coș de cumpărături, procesare comenzi și panou de administrare. Include integrare cu sistemul de plăți și trimitere email automatizată.
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-badge">PHP</span>
+                        <span class="tech-badge">MySQL</span>
+                        <span class="tech-badge">JavaScript</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">📱 Sistem de Gestiune Taskuri</div>
+                    <div class="project-description">
+                        Aplicație web pentru gestiunea proiectelor cu funcții de creare, editare și ștergere de taskuri. Include sistem de categorii, deadline-uri și notificări în timp real.
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-badge">Node.js</span>
+                        <span class="tech-badge">Express</span>
+                        <span class="tech-badge">MongoDB</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">Portfolio Personal</div>
+                    <div class="project-description">
+                        Website responsiv cu design modern pentru prezentarea proiectelor și al competențelor. Include animații smooth, scroll effects și interfață user-friendly.
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-badge">HTML5</span>
+                        <span class="tech-badge">CSS3</span>
+                        <span class="tech-badge">JavaScript</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">Sistem de Autentificare</div>
+                    <div class="project-description">
+                        Sistem sigur de înregistrare și autentificare cu hashing de parolă, validare email și recuperare parolă. Include protecții împotriva atacurilor CSRF și SQL injection.
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-badge">PHP</span>
+                        <span class="tech-badge">bcrypt</span>
+                        <span class="tech-badge">Sessions</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">📊 Dashboard cu Statistici</div>
+                    <div class="project-description">
+                        Panou de control cu grafice și statistici în timp real. Prezintă datele utilizatorului, venituri și analytics cu vizualizări interactive și export la PDF.
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-badge">Chart.js</span>
+                        <span class="tech-badge">React</span>
+                        <span class="tech-badge">API REST</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">🛒 Store API</div>
+                    <div class="project-description">
+                        API RESTful pentru magazin online cu funcții complete de CRUD. Include autentificare JWT, validare date și documentație Swagger.
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-badge">Node.js</span>
+                        <span class="tech-badge">JWT</span>
+                        <span class="tech-badge">REST API</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">📝 Blog Platform</div>
+                    <div class="project-description">
+                        Platformă de blogging cu editor text avansat, sistem de comentarii, categorii și etichete. Include SEO optimization și versioning articolelor.
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-badge">PHP</span>
+                        <span class="tech-badge">MySQL</span>
+                        <span class="tech-badge">HTML/CSS</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">🎯 Sistem de Managment</div>
+                    <div class="project-description">
+                        Aplicație pentru gestiunea unei săli de fitness cu înregistrare membri, planuri de antrenament și tracking progres. Include rapoarte și notificări.
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-badge">Laravel</span>
+                        <span class="tech-badge">MySQL</span>
+                        <span class="tech-badge">Bootstrap</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">🌟 Joc Web Interactiv</div>
+                    <div class="project-description">
+                        Joc web cu mecanică interactivă, sistem de scoruri și leaderboard. Include efecte sonore, animații și saving progresului în LocalStorage.
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-badge">JavaScript</span>
+                        <span class="tech-badge">Canvas API</span>
+                        <span class="tech-badge">Game Dev</span>
+                    </div>
+                </div>
 
             </div>
 
@@ -601,9 +892,45 @@
 
     </section>
 
+    </section>
+
     <footer>
 
-        © 2026 Levin Petru | Blog Personal IT
+        <div style="max-width: 1200px; margin: 0 auto; padding-top: 20px; border-top: 1px solid #00ff88;">
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; margin-bottom: 30px;">
+
+                <div>
+                    <h3 style="color: #00ff88; margin-bottom: 10px;">Despre Mine</h3>
+                    <p style="color: #aaa; font-size: 14px; line-height: 1.6;">
+                        Student la Colegiul Iulia Hasdeu, specializat în Administrarea Aplicațiilor Web.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 style="color: #00ff88; margin-bottom: 10px;">Servicii</h3>
+                    <ul style="list-style: none; color: #aaa; font-size: 14px;">
+                        <li>✓ Web Development</li>
+                        <li>✓ Full-Stack Solutions</li>
+                        <li>✓ Database Design</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 style="color: #00ff88; margin-bottom: 10px;">Contact Rapid</h3>
+                    <p style="color: #aaa; font-size: 14px;">
+                        Email: petru.levin@example.com<br>
+                        Telefon: +373 (0) XXX XXX
+                    </p>
+                </div>
+
+            </div>
+
+            <div style="text-align: center; padding-top: 20px; border-top: 1px solid #222; color: #666; font-size: 12px;">
+                © 2026 Levin Petru | Blog Personal IT | Toate drepturile rezervate
+            </div>
+
+        </div>
 
     </footer>
 
@@ -682,45 +1009,42 @@
 
         skillObserver.observe(document.querySelector("#skills"));
 
-        /* PROJECT COUNTER */
+        /* PORTFOLIO STATS COUNTER */
 
-        let counterStarted = false;
+        let statsAnimationStarted = false;
 
-        function animateCounter() {
+        function animateStats() {
+            if (statsAnimationStarted) return;
 
-            if (counterStarted) return;
+            let statsSection = document.querySelector(".portfolio-stats");
+            if (!statsSection) return;
 
-            let section = document.querySelector("#proiecte");
+            if (statsSection.getBoundingClientRect().top < window.innerHeight) {
+                statsAnimationStarted = true;
 
-            if (section.getBoundingClientRect().top < window.innerHeight) {
+                let statNumbers = document.querySelectorAll(".stat-number");
 
-                counterStarted = true;
+                statNumbers.forEach(element => {
+                    let target = parseInt(element.dataset.target);
+                    let suffix = element.dataset.suffix || "";
+                    let count = 0;
+                    let step = Math.ceil(target / 50);
 
-                let counter = document.getElementById("counter");
-
-                let count = 0;
-
-                let interval = setInterval(() => {
-
-                    if (count >= 50) {
-
-                        counter.innerText = "50+";
-                        clearInterval(interval);
-
-                    } else {
-
-                        count++;
-                        counter.innerText = count;
-
-                    }
-
-                }, 40);
-
+                    let interval = setInterval(() => {
+                        if (count >= target) {
+                            element.innerText = target + suffix;
+                            clearInterval(interval);
+                        } else {
+                            count += step;
+                            if (count > target) count = target;
+                            element.innerText = count + suffix;
+                        }
+                    }, 30);
+                });
             }
-
         }
 
-        window.addEventListener("scroll", animateCounter);
+        window.addEventListener("scroll", animateStats);
 
     </script>
 
